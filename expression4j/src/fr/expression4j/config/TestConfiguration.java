@@ -20,16 +20,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
-import fr.expression4J.config.BinaryOperator;
-import fr.expression4J.config.CatalogDocument;
-import fr.expression4J.config.Catalogs;
-import fr.expression4J.config.ConfigurationDocument;
-import fr.expression4J.config.ModelDocument;
-import fr.expression4J.config.Models;
-import fr.expression4J.config.OperatorDocument;
-import fr.expression4J.config.OperatorManagerDocument;
-import fr.expression4J.config.OperatorManagers;
-import fr.expression4J.config.Operators;
+import fr.expression4j.config.BinaryOperator;
+import fr.expression4j.config.CatalogDocument;
+import fr.expression4j.config.Catalogs;
+import fr.expression4j.config.ConfigurationDocument;
+import fr.expression4j.config.ModelDocument;
+import fr.expression4j.config.Models;
+import fr.expression4j.config.OperatorDocument;
+import fr.expression4j.config.OperatorManagerDocument;
+import fr.expression4j.config.OperatorManagers;
+import fr.expression4j.config.Operators;
 import fr.expression4j.basic.ExpressionElement;
 import fr.expression4j.basic.MathematicalElement;
 import fr.expression4j.basic.Operator;
@@ -127,7 +127,7 @@ public class TestConfiguration {
 			binOp.addOperatorClassName("Exponent");
 			binOp.setPriority(3);
 			
-			fr.expression4J.config.ExpressionElement expElem = currentModel.addNewExpressionElement();
+			fr.expression4j.config.ExpressionElement expElem = currentModel.addNewExpressionElement();
 			expElem.setExpressionElementClassName("fr.expression4j.basic.expElem1");
 			expElem.setEvaluationOrder(1);
 			expElem = currentModel.addNewExpressionElement();
@@ -231,7 +231,7 @@ public class TestConfiguration {
 				int nbExpressionElementPriority = currentExpressionModel.getMaxExpressionElementPriority();
 				for (int i=1; i<=nbExpressionElementPriority; i++) {
 					ExpressionElement currentExpressionElement = currentExpressionModel.getExpressionElement(i);
-					fr.expression4J.config.ExpressionElement expElemXML = currentModelXML.addNewExpressionElement();
+					fr.expression4j.config.ExpressionElement expElemXML = currentModelXML.addNewExpressionElement();
 					expElemXML.setEvaluationOrder(i);
 					expElemXML.setExpressionElementClassName(currentExpressionElement.getClass().getName());
 				}
@@ -258,7 +258,7 @@ public class TestConfiguration {
 					String currentExpressionName = (String) iter2.next();
 					Expression currentExpression = currentCatalog.getExpression(currentExpressionName);
 					
-					fr.expression4J.config.Expression expressionXML = catalogXML.addNewExpression();
+					fr.expression4j.config.Expression expressionXML = catalogXML.addNewExpression();
 					expressionXML.setExpressionName(currentExpression.getName());
 					expressionXML.setExpressionValue(currentExpression.toString());
 					expressionXML.setExpressionModel(currentExpression.getExpressionModel().getName());
@@ -271,7 +271,7 @@ public class TestConfiguration {
 				while (iter2.hasNext()) {
 					String currentConstantName = (String) iter2.next();
 					MathematicalElement currentConstant = currentCatalog.getConstant(currentConstantName);
-					fr.expression4J.config.Constant constantXML = catalogXML.addNewConstant();
+					fr.expression4j.config.Constant constantXML = catalogXML.addNewConstant();
 					constantXML.setConstantName(currentConstantName);
 					
 					//set ptoperties
@@ -280,7 +280,7 @@ public class TestConfiguration {
 					while (enm.hasMoreElements()) {
 						String currentProperty = (String) enm.nextElement();
 						String currentValue = properties.getProperty(currentProperty);
-						fr.expression4J.config.Constant.ConstantProperty currentConstantProperty = constantXML.addNewConstantProperty();
+						fr.expression4j.config.Constant.ConstantProperty currentConstantProperty = constantXML.addNewConstantProperty();
 						
 						currentConstantProperty.setName(currentProperty);
 						currentConstantProperty.setValue(currentValue);

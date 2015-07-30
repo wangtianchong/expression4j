@@ -24,17 +24,17 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
-import fr.expression4J.config.BinaryOperator;
-import fr.expression4J.config.CatalogDocument;
-import fr.expression4J.config.Catalogs;
-import fr.expression4J.config.ConfigurationDocument;
-import fr.expression4J.config.Constant;
-import fr.expression4J.config.ModelDocument;
-import fr.expression4J.config.Models;
-import fr.expression4J.config.OperatorDocument;
-import fr.expression4J.config.OperatorManagerDocument;
-import fr.expression4J.config.OperatorManagers;
-import fr.expression4J.config.Operators;
+import fr.expression4j.config.BinaryOperator;
+import fr.expression4j.config.CatalogDocument;
+import fr.expression4j.config.Catalogs;
+import fr.expression4j.config.ConfigurationDocument;
+import fr.expression4j.config.Constant;
+import fr.expression4j.config.ModelDocument;
+import fr.expression4j.config.Models;
+import fr.expression4j.config.OperatorDocument;
+import fr.expression4j.config.OperatorManagerDocument;
+import fr.expression4j.config.OperatorManagers;
+import fr.expression4j.config.Operators;
 import fr.expression4j.basic.ExpressionElement;
 import fr.expression4j.basic.MathematicalElement;
 import fr.expression4j.basic.Operator;
@@ -154,7 +154,7 @@ public final class ConfigurationUtil {
 				
 				//add expression models
 				log.debug("Add expression models");
-				fr.expression4J.config.ExpressionElement[] expressionElementList = currentModelXML.getExpressionElementArray();
+				fr.expression4j.config.ExpressionElement[] expressionElementList = currentModelXML.getExpressionElementArray();
 				for (int j=0; j<expressionElementList.length; j++) {
 					int currentExpressionElementIndex = expressionElementList[j].getEvaluationOrder();
 					Class currentClass = Class.forName(expressionElementList[j].getExpressionElementClassName());
@@ -195,7 +195,7 @@ public final class ConfigurationUtil {
 				}
 
 				//add expression to catalog
-				fr.expression4J.config.Expression[] expressionList = catalogList[i].getExpressionArray();
+				fr.expression4j.config.Expression[] expressionList = catalogList[i].getExpressionArray();
 				for (int j=0; j<expressionList.length; j++) {
 					//String currentExpressionName = expressionList[j].getExpressionName();
 					String currentExpressionClass = expressionList[j].getExpressionClass();
@@ -310,7 +310,7 @@ public final class ConfigurationUtil {
 				int nbExpressionElementPriority = currentExpressionModel.getMaxExpressionElementPriority();
 				for (int i=1; i<=nbExpressionElementPriority; i++) {
 					ExpressionElement currentExpressionElement = currentExpressionModel.getExpressionElement(i);
-					fr.expression4J.config.ExpressionElement expElemXML = currentModelXML.addNewExpressionElement();
+					fr.expression4j.config.ExpressionElement expElemXML = currentModelXML.addNewExpressionElement();
 					expElemXML.setEvaluationOrder(i);
 					expElemXML.setExpressionElementClassName(currentExpressionElement.getClass().getName());
 				}
@@ -336,7 +336,7 @@ public final class ConfigurationUtil {
 				while (iter2.hasNext()) {
 					String currentConstantName = (String) iter2.next();
 					MathematicalElement currentConstant = currentCatalog.getConstant(currentConstantName);
-					fr.expression4J.config.Constant constantXML = catalogXML.addNewConstant();
+					fr.expression4j.config.Constant constantXML = catalogXML.addNewConstant();
 					constantXML.setConstantName(currentConstantName);
 					
 					//set ptoperties
@@ -345,7 +345,7 @@ public final class ConfigurationUtil {
 					while (enm.hasMoreElements()) {
 						String currentProperty = (String) enm.nextElement();
 						String currentValue = properties.getProperty(currentProperty);
-						fr.expression4J.config.Constant.ConstantProperty currentConstantProperty = constantXML.addNewConstantProperty();
+						fr.expression4j.config.Constant.ConstantProperty currentConstantProperty = constantXML.addNewConstantProperty();
 						
 						currentConstantProperty.setName(currentProperty);
 						currentConstantProperty.setValue(currentValue);
@@ -360,7 +360,7 @@ public final class ConfigurationUtil {
 					String currentExpressionName = (String) iter2.next();
 					Expression currentExpression = currentCatalog.getExpression(currentExpressionName);
 					
-					fr.expression4J.config.Expression expressionXML = catalogXML.addNewExpression();
+					fr.expression4j.config.Expression expressionXML = catalogXML.addNewExpression();
 					expressionXML.setExpressionName(currentExpression.getName());
 					expressionXML.setExpressionValue(currentExpression.toString());
 					expressionXML.setExpressionClass(currentExpression.getClass().getName());
